@@ -38,19 +38,19 @@ public class Student {
 	
 	public String getStudyPlan(){
 		
-		String list = "";
+		StringBuffer list = new StringBuffer("");
 		
 		if( nCourses != 0 ){
 			for(int i=0; i < nCourses; i++){
-				list += courses[i].getCourseInfo() + "\n";
-				//TODO: a \n is appended at the end. Delete the last \n.
-				//TODO: use StringBuffer instead String
+				list.append(courses[i].getCourseInfo() );
+				if( i != (nCourses-1) )	//TODO: This doesn't work! Try to delete the last \n after for construct
+					list.append("\n");
 			}
 		}else{ 
 			return "Student " + id + " has no active course";
 		}
 
-		return list;
+		return list.toString();
 	}
 	
 	
