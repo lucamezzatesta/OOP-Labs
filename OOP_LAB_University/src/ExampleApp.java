@@ -26,6 +26,5 @@ public class ExampleApp {
 		
 		System.out.println(poli.listAttendees(macro));
 		System.out.println(poli.studyPlan(s1));
-		
 	}
 }

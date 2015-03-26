@@ -36,17 +36,19 @@ public class Course {
 	
 	public String getAttendees(){
 		
-		String list = "";
+		StringBuffer list = new StringBuffer("");
 		
 		if( nStudents != 0 ){
 			for(int i=0; i < nStudents; i++)
-				list += students[i].getStudentInfo() + "\n";
-				//TODO: a \n is appended at the end. Delete the last \n.
-				//TODO: use StringBuffer instead String
+				list.append(students[i].getStudentInfo() ).append("\n");
+			
 		} else {
 			return "Course " + id + "has no students enrolled.";
 		}
 		
-		return list;
+		// deleting the last \n
+		list.delete(list.length()-1,list.length());
+		
+		return list.toString();
 	}
 }

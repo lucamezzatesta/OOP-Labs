@@ -41,14 +41,15 @@ public class Student {
 		StringBuffer list = new StringBuffer("");
 		
 		if( nCourses != 0 ){
-			for(int i=0; i < nCourses; i++){
-				list.append(courses[i].getCourseInfo() );
-				if( i != (nCourses-1) )	//TODO: This doesn't work! Try to delete the last \n after for construct
-					list.append("\n");
-			}
+			for(int i=0; i < nCourses; i++)
+				list.append(courses[i].getCourseInfo() ).append("\n");
+
 		}else{ 
 			return "Student " + id + " has no active course";
 		}
+		
+		// deleting the last \n
+		list.delete( list.length()-1, list.length() );
 
 		return list.toString();
 	}
