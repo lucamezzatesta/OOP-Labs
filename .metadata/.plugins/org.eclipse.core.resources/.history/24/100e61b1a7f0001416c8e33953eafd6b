@@ -1,0 +1,129 @@
+package diet;
+
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * Represent a recipe of the diet.
+ * 
+ * A recipe consists of a a set of ingredients that are given amounts of raw materials.
+ * The overall nutritional values of a recipe can be computed
+ * on the basis of the ingredients' values and are expressed per 100g
+ * 
+ *
+ */
+public class Recipe implements NutritionalElement {
+    
+	/**
+	 * Private data
+	 */
+	private String name;
+	private Food food;
+	
+	private double calories;
+	private double proteins;
+	private double carbs;
+	private double fat;
+	
+	private double quantity;
+
+	
+	private Map<String, NutritionalElement> ingredients;
+	
+	/**
+	 * Recipe constructor.
+	 * The reference {@code food} of type {@link Food} must be used to
+	 * retrieve the information about ingredients. 
+	 * 
+	 * @param nome unique name of the recipe
+	 * @param food object containing the information about ingredients
+	 */
+	public Recipe(String name, Food food){
+		
+		// even if not requested, checking if name already exists
+		if( food.setRecipe(name,this) == false ){
+			System.out.println("Error: the recipe "+ name +" already exists.");
+			return;
+		}
+		
+		ingredients = new TreeMap<>();
+		
+		this.name = name;
+		this.food = food;
+		
+		calories = 0;
+		proteins = 0;
+		carbs = 0;
+		fat = 0;
+		
+		quantity = 0;
+		
+	}
+	
+	/**
+	 * Adds a given quantity of an ingredient to the recipe.
+	 * The ingredient is a raw material defined with the {@code food}
+	 * argument of the constructor.
+	 * 
+	 * @param material the name of the raw material to be used as ingredient
+	 * @param quantity the amount in grams of the raw material to be used
+	 */
+	public void addIngredient(String material, double quantity) {
+		
+		NutritionalElement newIngredient = food.getRawMaterial(material);
+		double norm = quantity/100;
+		
+		// checking if the material already exists
+		if( ingredients.containsKey(material) ){
+			System.out.println("Error: the material"+ material +" already exists.");
+			return;
+		}
+		
+		ingredients.put(material, newIngredient);
+		
+		calories += newIngredient.getCalories()*norm;
+		proteins += newIngredient.getProteins()*norm;
+		carbs += newIngredient.getCarbs()*norm;
+		fat += newIngredient.getFat()*norm;
+		
+		this.quantity += quantity;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public double getCalories() {
+		double norm = 100/quantity;
+		calories = calories*norm;
+		
+		return calories;
+	}
+
+	public double getProteins() {
+		double norm = 100/quantity;
+		proteins = proteins*norm;
+		
+		return proteins;
+	}
+
+	public double getCarbs() {
+		double norm = 100/quantity;
+		carbs = carbs*norm;
+		
+		return carbs;
+	}
+
+	public double getFat() {
+		double norm = 100/quantity;
+		fat = fat*norm;
+		
+		return fat;
+	}
+
+	public boolean per100g() {
+		// a recipe expressed nutritional values per 100g
+		return true;
+	}
+
+}

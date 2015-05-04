@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/704ccb5e2ec80014151bc246d673c86f=704ccb5e2ec80014151bc246d673c86f;https\://softeng.polito.it/svn/OOPLabs/s193332;https\://softeng.polito.it/svn/OOPLabs/s193332;branches;tags;trunk;true;b715efce-7bb6-48b6-ac95-e3d7fd2ffc6a;https\://softeng.polito.it/svn/OOPLabs/s193332;;false;;;0
+repositories/f0bbb45e96c80014151bc246d673c86f=f0bbb45e96c80014151bc246d673c86f;http\://softeng.polito.it/svn/OOP2015/;OOP code samples;branches;tags;trunk;true;eacaddda-c842-4777-86d4-386d62b1d290;http\://softeng.polito.it/svn/OOP2015;;false;;;0
